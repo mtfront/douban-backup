@@ -293,7 +293,7 @@ async function fetchItem(link, category) {
       await client.post('https://sec.douban.com/c', {
         form: payload
       });
-      console.success('PoW solved and submitted. Retrying original request...');
+      console.log('✅ PoW solved and submitted. Retrying original request...');
 
       // 验证通过后，带上新 Cookie 重新请求
       response = await client(link);

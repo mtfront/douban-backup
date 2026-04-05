@@ -1,6 +1,3 @@
-import crypto from 'crypto';
-import { CookieJar } from 'tough-cookie';
-
 const {config} = require('dotenv');
 const {Client} = require("@notionhq/client");
 const dayjs = require('dayjs');
@@ -10,6 +7,8 @@ const {JSDOM} = jsdom;
 const Parser = require('rss-parser');
 const parser = new Parser();
 const {DB_PROPERTIES, PropertyType, sleep} = require('./util');
+const crypto = require('crypto');
+const { CookieJar } = require('tough-cookie');
 
 config();
 

@@ -308,9 +308,6 @@ async function fetchItem(link, category) {
 
   // movie item page
   if (category === CATEGORY.movie) {
-    console.log(dom.window.document.querySelector('#content'));
-    console.log(dom.window.document.querySelector('#content span'));
-    console.log(dom.window.document.querySelector('#content span[property="v:itemreviewed"]'));
     itemData[DB_PROPERTIES.TITLE] = dom.window.document.querySelector('#content span[property="v:itemreviewed"]').textContent.trim();
     itemData[DB_PROPERTIES.YEAR] = dom.window.document.querySelector('#content h1 .year').textContent.slice(1, -1);
     itemData[DB_PROPERTIES.POSTER] = dom.window.document.querySelector('#mainpic img')?.src.replace(/\.webp$/, '.jpg');

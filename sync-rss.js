@@ -282,7 +282,7 @@ async function fetchItem(link, category) {
 
   // 4. 检查是否命中了 PoW 挑战页
   if (response.body.includes('id="sec"') && response.body.includes('sha512')) {
-    consola.info('Detected Douban PoW challenge, solving...');
+    console.info('Detected Douban PoW challenge, solving...');
     const payload = await solveDoubanPoW(response.body);
 
     if (payload) {
@@ -293,7 +293,7 @@ async function fetchItem(link, category) {
       await client.post('https://sec.douban.com/c', {
         form: payload
       });
-      consola.success('PoW solved and submitted. Retrying original request...');
+      console.success('PoW solved and submitted. Retrying original request...');
 
       // 验证通过后，带上新 Cookie 重新请求
       response = await client(link);
@@ -302,6 +302,7 @@ async function fetchItem(link, category) {
 
   const itemData = {};
   const dom = new JSDOM(response.body);
+  const doc = dom.window.document;
 
   // 检查是否依然在验证页（可能 IP 被彻底封禁或验证失败）
   if (doc.querySelector('#sec')) {
